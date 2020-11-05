@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"time"
-	"github.com/fatemeh-al/DS_CA1/broker"
+	"github.com/fatemeh-al/DS_CA1_sync/main/broker"
 )
 
 type myMessage string
