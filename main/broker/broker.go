@@ -3,8 +3,9 @@ package broker
 type Message interface{}
 
 type Subscriber interface {
+	CreateChannel(channel string) (<-chan Message, error)
+	DeleteChannel(channel string) error
 	Subscribe(channel string) (<-chan Message, error)
-	Unsubscribe(channel string) error
 }
 
 type Publisher interface {

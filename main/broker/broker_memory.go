@@ -14,13 +14,18 @@ func NewMemoryBroker() *memoryBroker {
 	}
 }
 
-func (b *memoryBroker) Subscribe(channel string) (<-chan Message, error) {
+func (b *memoryBroker) CreateChannel(channel string) (<-chan Message, error) {
 	ch := make(chan Message, 3)
 	b.chans[channel] = ch
 	return ch, nil
 }
 
-func (b *memoryBroker) Unsubscribe(channel string) error {
+func (b *memoryBroker) Subscribe(channel string) (<-chan Message, error) {
+	ch := b.chans[channel]
+	return ch, nil
+}
+
+func (b *memoryBroker) DeleteChannel(channel string) error {
 	ch, ok := b.chans[channel]
 	if !ok {
 		return errors.Errorf("cannot find channel %s", channel)
